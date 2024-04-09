@@ -13,9 +13,12 @@ public class FactorySimultanious {
         bottles[1] = bottleFactory.createBottleWith(1, new SparklingWater("no", "no", "transparent", 5));
         bottles[2] = bottleFactory.createBottleWith(1.5, new SparklingWater("no", "no", "transparent", 22));
 
-        bottles[0].open();
-        bottles[1].open();
-        bottles[2].open();
+//        bottles[0].open();
+//        bottles[1].open();
+//        bottles[2].open();
+        new Thread(() -> bottles[0].open()).start();
+        new Thread(() -> bottles[1].open()).start();
+        new Thread(() -> bottles[2].open()).start();
 //        for (Bottle bottle : bottles) {
 //            bottle.open();
 //            if (bottle.getWater() instanceof SparklingWater) {
